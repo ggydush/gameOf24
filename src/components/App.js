@@ -55,7 +55,7 @@ export default class App extends Component {
 		}
 	}
 	showCard = () => {
-		this.setState({ showSolution: true })
+		this.setState({ showSolution: !this.state.showSolution })
 	}
 	render() {
 		return (

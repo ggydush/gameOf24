@@ -1,0 +1,98 @@
+body {
+	--game-card-background: rgb(71, 189, 154);
+	--game-card-cirle-background: rgb(255, 255, 255);
+	--game-card-cross-color: rgb(0, 0, 0);
+	--game-card-height: 400px;
+	margin: 0;
+	padding: 0;
+}
+
+.game-card {
+	height: var(--game-card-height);
+	width: var(--game-card-height);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1rem;
+	background: var(--game-card-background);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	font-size: 100px;
+	margin-bottom: 20px;
+	position: relative;
+}
+.circle {
+	height: 92%;
+	width: 92%;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--game-card-cirle-background);
+	position: relative;
+}
+
+.circle:before,
+.circle:after {
+	position: absolute;
+	content: '';
+	width: var(--game-card-height);
+	height: 8px;
+	background-color: black;
+	background-color: var(--game-card-cross-color);
+	border-radius: 50%;
+}
+
+.circle:before {
+	transform: rotate(45deg);
+}
+
+.circle:after {
+	transform: rotate(-45deg);
+}
+.number {
+	position: absolute;
+	padding: 30px;
+	cursor: pointer;
+}
+.number:nth-child(1) {
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.number:nth-child(2) {
+	top: 50%;
+	right: 0;
+	transform: translate(0, -50%);
+}
+.number:nth-child(3) {
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.number:nth-child(4) {
+	top: 50%;
+	left: 0;
+	transform: translate(0, -50%);
+}
+.operation {
+	position: absolute;
+	font-size: 24px;
+	padding: 10px;
+	cursor: pointer;
+}
+.operation:nth-child(1) {
+	top: 0;
+	left: 0;
+}
+.operation:nth-child(2) {
+	top: 0;
+	right: 0;
+}
+.operation:nth-child(3) {
+	bottom: 0;
+	right: 0;
+}
+.operation:nth-child(4) {
+	bottom: 0;
+	left: 0;
+}

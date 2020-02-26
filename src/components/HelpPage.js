@@ -15,13 +15,13 @@ const HelpPage = ({ show, showHideHelp }) => {
 				rules are simple:
 				<br />
 				<br />
-				Find a way to maniuplate the 4 integers to create
+				Find a way to manipulate the 4 integers to create
 				<strong> 24</strong> using addition, subtraction,
 				multiplication, and division.<br />
 				<img src={ExampleImage} alt="Card with 8, 3, 7, 2" />
 				<br />
 				For this card, an example solution would be:<br />
-				(8 - 2) x (7 - 3)
+				(8 - 2) x (7 - 3) = 24
 			</p>
 			<button className="button" onClick={showHideHelp}>
 				OK I'm Ready!

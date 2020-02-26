@@ -4,24 +4,43 @@ import './GameCard.css'
 export default class GameCard extends Component {
 	renderList() {
 		return this.props.numbers.map((number, idx) => {
+			const onClick = this.props.onClick
 			return (
-				<div className="number" key={idx}>
+				<div
+					data-value={number}
+					className="number"
+					key={idx}
+					onClick={onClick}
+				>
 					{number}
 				</div>
 			)
 		})
 	}
 	render() {
+		const onClick = this.props.onClick
 		return (
 			<div className="game-card">
-				<div className="operation">+</div>
-				<div className="operation">-</div>
-				<div className="operation">÷</div>
-				<div className="operation">x</div>
+				<div data-value="+" className="operation" onClick={onClick}>
+					+
+				</div>
+				<div data-value="-" className="operation" onClick={onClick}>
+					-
+				</div>
+				<div data-value="/" className="operation" onClick={onClick}>
+					÷
+				</div>
+				<div data-value="*" className="operation" onClick={onClick}>
+					x
+				</div>
 				<div className="circle">
 					<div className="square">
-						<div>(</div>
-						<div>)</div>
+						<div data-value="(" onClick={onClick}>
+							(
+						</div>
+						<div data-value=")" onClick={onClick}>
+							)
+						</div>
 					</div>
 					<div className="cross">{this.renderList()}</div>
 				</div>

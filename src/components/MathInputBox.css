@@ -1,0 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.math-input-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 400px;
+	height: 40px;
+}
+.math-input-box * {
+	border-radius: 5px;
+	margin: 0px 5px;
+	padding: 0px 10px;
+	font-size: 20px;
+}
+.math-input-box form {
+	display: flex;
+	align-items: center;
+}
+
+.math-input-box input {
+	box-sizing: border-box;
+	width: 250px;
+	height: 100%;
+}
+.backspace {
+	font-size: 30px;
+	margin: 0;
+	cursor: pointer;
+}
+.math-input-box .output {
+	height: 100%;
+	width: 40px;
+	background-color: rgb(184, 184, 184);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin-left: 0;
+}

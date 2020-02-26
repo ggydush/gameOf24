@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 }
-.solution-card {
+.card {
 	position: fixed;
 	padding: 20px;
 	width: 400px;
@@ -11,10 +11,17 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	z-index: 9;
 }
+.header {
+	color: rgb(7, 143, 102);
+}
 
 h2 {
 	margin: 10px 0px;
 }
 .solution {
 	margin: 8px;
+	font-family: Arial-Narrow;
+}
+.card .button {
+	margin-top: 10px;
 }

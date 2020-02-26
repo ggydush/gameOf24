@@ -51,7 +51,7 @@ body {
 }
 .number {
 	position: absolute;
-	padding: 30px;
+	padding: 20px;
 	cursor: pointer;
 }
 .number:nth-child(1) {
@@ -62,7 +62,7 @@ body {
 .number:nth-child(2) {
 	top: 50%;
 	right: 0;
-	transform: translate(0, -50%);
+	transform: translate(0, -55%);
 }
 .number:nth-child(3) {
 	bottom: 0;
@@ -72,7 +72,7 @@ body {
 .number:nth-child(4) {
 	top: 50%;
 	left: 0;
-	transform: translate(0, -50%);
+	transform: translate(0, -55%);
 }
 .operation {
 	position: absolute;

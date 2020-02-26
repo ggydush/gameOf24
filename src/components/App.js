@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import MathEvaluator from './MathEvaluator'
-import GameCard from './GameCard'
-import SolutionCard from './SolutionCard'
-import './App.css'
+import { evaluate } from 'mathjs'
 
+import GameCard from './GameCard'
+import MathInputBox from './MathInputBox'
+import SolutionCard from './SolutionCard'
+import HelpPage from './HelpPage'
 import { solver } from '../scripts/solver'
+
+import './App.css'
 
 const generateNumber = () => {
 	return Math.floor(Math.random() * 10)
@@ -24,52 +27,164 @@ const checkIfEqual = (arr1, arr2) => {
 	return arr1.sort().join(',') === arr2.sort().join(',')
 }
 
+function sanitizeInput(string) {
+	const acceptableChars = [
+		'0',
+		'1',
+		'2',
+		'3',
+		'4',
+		'5',
+		'6',
+		'7',
+		'8',
+		'9',
+		'(',
+		')',
+		'+',
+		'-',
+		'*',
+		'x',
+		'/',
+		'\u0020',
+	]
+	string = string.toLowerCase()
+	const result = []
+	for (let char of string) {
+		if (acceptableChars.includes(char)) {
+			result.push(char.replace('x', '*'))
+		}
+	}
+	return result.join('')
+}
+
 export default class App extends Component {
 	state = {
-		solveFor: 24,
+		text: '',
 		numbers: [],
 		solutions: [],
-		userSolution: null,
+		solveFor: 24,
+		total: 0, // Ideally exclude from state, but execute in Mathjs errors a lot
 		showSolution: false,
+		showHelp: false,
 	}
+
 	createNewCard = () => {
-		let [ arr, solution ] = generateSolvableArray(this.state.solveFor)
+		const [ arr, solutions ] = generateSolvableArray(this.state.solveFor)
 		this.setState({
+			text: '',
 			numbers: arr,
-			solutions: solution,
-			userSolution: null,
+			solutions: solutions,
+			total: 0,
 			showSolution: false,
 		})
 	}
+
 	componentDidMount = () => {
 		this.createNewCard()
-	}
-	onFormSubmit = (string, output) => {
-		if (output === this.state.solveFor) {
-			const numbers = string.match(/\d+/g).map(Number)
-			const foundSolution = checkIfEqual(numbers, this.state.numbers)
-			if (foundSolution) {
-				this.setState({ userSolution: string, showSolution: true })
-				return true
+		document.querySelector('body').addEventListener('click', (e) => {
+			if (e.target.className === 'app') {
+				this.setState({ showSolution: false })
+				this.setState({ showHelp: false })
 			}
-		}
+		})
 	}
-	showCard = () => {
+	showHideHelp = () => {
+		if (!this.state.showHelp) {
+			this.setState({ showSolution: false })
+		}
+		this.setState({ showHelp: !this.state.showHelp })
+	}
+	showHideCard = () => {
+		if (!this.state.showSolution) {
+			this.setState({ showHelp: false })
+		}
 		this.setState({ showSolution: !this.state.showSolution })
 	}
+
+	getSolutions() {
+		return solver(this.state.numbers, this.state.solveFor)
+	}
+
+	calculateOutput(text) {
+		try {
+			return Math.round(evaluate(text) * 100) / 100
+		} catch (e) {
+			return null
+		}
+	}
+	updateInput(text) {
+		const updatedText = sanitizeInput(text)
+		const total =
+			text.length === 0
+				? 0
+				: this.calculateOutput(text) || this.state.total
+		this.setState({ text: updatedText, total: total })
+	}
+	backspace = () => {
+		const updatedText = this.state.text.slice(0, -1)
+		this.updateInput(updatedText)
+	}
+
+	onInputChange = (event) => {
+		this.updateInput(event.target.value)
+	}
+	onButtonClick = (event) => {
+		const updatedText =
+			this.state.text + event.target.getAttribute('data-value')
+		this.updateInput(updatedText)
+	}
+	checkIfSolved = () => {
+		if (this.state.total === this.state.solveFor) {
+			const inputNumbers = this.state.text.match(/\d+/g).map(Number)
+			const numbersToCheck = [ ...this.state.numbers ]
+			return checkIfEqual(inputNumbers, numbersToCheck)
+		}
+	}
+
+	submitSolution = (event) => {
+		event.preventDefault()
+		if (this.checkIfSolved()) {
+			this.setState({ showSolution: !this.state.showSolution })
+		}
+	}
+
 	render() {
 		return (
 			<div className="app">
-				<GameCard numbers={this.state.numbers} />
-				<MathEvaluator
-					onSubmit={this.onFormSubmit}
-					showCard={this.showCard}
+				<GameCard
+					numbers={this.state.numbers}
+					onClick={this.onButtonClick}
+				/>
+				<MathInputBox
+					value={this.state.text}
+					onChange={this.onInputChange}
+					onSubmit={this.submitSolution}
+					total={this.state.total}
+					backspace={this.backspace}
 				/>
 				<SolutionCard
-					userSolution={this.state.userSolution}
+					userSolution={this.state.text}
+					solved={this.checkIfSolved()}
 					solutions={this.state.solutions}
 					newCard={this.createNewCard}
 					showSolution={this.state.showSolution}
+				/>
+
+				<div className="buttons">
+					<button className="button" onClick={this.submitSolution}>
+						Submit
+					</button>
+					<button className="button" onClick={this.showHideCard}>
+						I Give Up
+					</button>
+					<button className="button" onClick={this.showHideHelp}>
+						How the Heck?
+					</button>
+				</div>
+				<HelpPage
+					show={this.state.showHelp}
+					showHideHelp={this.showHideHelp}
 				/>
 			</div>
 		)

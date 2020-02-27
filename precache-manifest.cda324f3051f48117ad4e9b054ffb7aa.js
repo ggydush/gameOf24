@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "48c4984a64e5b65523142324421482d3",
+    "revision": "a5e89f25f7baba6e912fe64c2e05e027",
     "url": "/gameOf24/index.html"
   },
   {
-    "revision": "a2ae7ce304f4d540ad27",
+    "revision": "e0ba39495df17ea27c46",
     "url": "/gameOf24/static/css/main.5da26137.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gameOf24/static/js/2.5c79c621.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a2ae7ce304f4d540ad27",
-    "url": "/gameOf24/static/js/main.8c465741.chunk.js"
+    "revision": "e0ba39495df17ea27c46",
+    "url": "/gameOf24/static/js/main.a32d519f.chunk.js"
   },
   {
     "revision": "6186a2baa84259afe8ed",

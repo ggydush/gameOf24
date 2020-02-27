@@ -66,7 +66,7 @@ export default class App extends Component {
 		solveFor: 24,
 		total: 0, // Ideally exclude from state, but execute in Mathjs errors a lot
 		showSolution: false,
-		showHelp: false,
+		showHelp: true,
 	}
 
 	createNewCard = () => {
@@ -179,7 +179,7 @@ export default class App extends Component {
 						I Give Up
 					</button>
 					<button className="button" onClick={this.showHideHelp}>
-						How the Heck?
+						How to Play
 					</button>
 				</div>
 				<HelpPage

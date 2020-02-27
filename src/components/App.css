@@ -3,6 +3,18 @@ body {
 	font-family: Arial-Narrow;
 }
 
+.overlay {
+	position: absolute;
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(152, 150, 150, 0.8);
+	z-index: 3;
+}
+.show {
+	display: block;
+}
+
 .app {
 	width: 100vw;
 	height: 100vh;

@@ -70,6 +70,7 @@ export default class App extends Component {
 	}
 
 	createNewCard = () => {
+		document.querySelector('.overlay').classList.toggle('show')
 		const [ arr, solutions ] = generateSolvableArray(this.state.solveFor)
 		this.setState({
 			text: '',
@@ -83,7 +84,11 @@ export default class App extends Component {
 	componentDidMount = () => {
 		this.createNewCard()
 		document.querySelector('body').addEventListener('click', (e) => {
-			if (e.target.className === 'app') {
+			if (
+				e.target.className === 'app' ||
+				e.target.className.includes('overlay')
+			) {
+				document.querySelector('.overlay').classList.remove('show')
 				this.setState({ showSolution: false })
 				this.setState({ showHelp: false })
 			}
@@ -93,12 +98,14 @@ export default class App extends Component {
 		if (!this.state.showHelp) {
 			this.setState({ showSolution: false })
 		}
+		document.querySelector('.overlay').classList.toggle('show')
 		this.setState({ showHelp: !this.state.showHelp })
 	}
 	showHideCard = () => {
 		if (!this.state.showSolution) {
 			this.setState({ showHelp: false })
 		}
+		document.querySelector('.overlay').classList.toggle('show')
 		this.setState({ showSolution: !this.state.showSolution })
 	}
 
@@ -146,12 +153,14 @@ export default class App extends Component {
 		event.preventDefault()
 		if (this.checkIfSolved()) {
 			this.setState({ showSolution: !this.state.showSolution })
+			document.querySelector('.overlay').classList.toggle('show')
 		}
 	}
 
 	render() {
 		return (
 			<div className="app">
+				<div className="overlay" />
 				<GameCard
 					numbers={this.state.numbers}
 					onClick={this.onButtonClick}

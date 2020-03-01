@@ -7,7 +7,7 @@ body {
 	padding: 0;
 }
 
-.game-card {
+.game-board {
 	height: var(--game-card-height);
 	width: var(--game-card-height);
 	display: flex;

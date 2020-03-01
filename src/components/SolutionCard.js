@@ -7,10 +7,15 @@ const SolutionCard = ({
 	solved,
 	solutions,
 	newCard,
-	showSolution,
+	show,
+	toggleSolution,
 }) => {
-	if (!showSolution) {
+	if (!show) {
 		return null
+	}
+	const createNewCard = () => {
+		toggleSolution()
+		newCard()
 	}
 	let userSolutionInfo = ''
 	if (userSolution && solved) {
@@ -26,7 +31,7 @@ const SolutionCard = ({
 		<div className="card">
 			{userSolutionInfo}
 			<SolutionDetail solutions={solutions} />
-			<button className="button" onClick={newCard}>
+			<button className="button" onClick={createNewCard}>
 				Try Another
 			</button>
 		</div>

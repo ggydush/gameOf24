@@ -1,8 +1,8 @@
 import React from 'react'
 import ExampleImage from '../images/example.png'
-import './HelpPage.css'
+import './HelpCard.css'
 
-const HelpPage = ({ show, showHideHelp }) => {
+const HelpCard = ({ show, toggleHelp }) => {
 	if (!show) {
 		return null
 	}
@@ -23,11 +23,11 @@ const HelpPage = ({ show, showHideHelp }) => {
 				For this card, an example solution would be:<br />
 				(8 - 2) x (7 - 3) = 24
 			</p>
-			<button className="button" onClick={showHideHelp}>
+			<button className="button" onClick={toggleHelp}>
 				OK I'm Ready!
 			</button>
 		</div>
 	)
 }
 
-export default HelpPage
+export default HelpCard

@@ -5,14 +5,13 @@ body {
 
 .overlay {
 	position: absolute;
-	display: none;
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(152, 150, 150, 0.8);
 	z-index: 3;
 }
-.show {
-	display: block;
+.hide {
+	display: none;
 }
 
 .app {

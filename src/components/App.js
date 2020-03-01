@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { evaluate } from 'mathjs'
 
-import GameCard from './GameCard'
+import GameBoard from './GameBoard'
 import MathInputBox from './MathInputBox'
 import SolutionCard from './SolutionCard'
-import HelpPage from './HelpPage'
+import HelpCard from './HelpCard'
 import { solver } from '../scripts/solver'
 
 import './App.css'
@@ -70,7 +70,6 @@ export default class App extends Component {
 	}
 
 	createNewCard = () => {
-		document.querySelector('.overlay').classList.toggle('show')
 		const [ arr, solutions ] = generateSolvableArray(this.state.solveFor)
 		this.setState({
 			text: '',
@@ -84,29 +83,12 @@ export default class App extends Component {
 	componentDidMount = () => {
 		this.createNewCard()
 		document.querySelector('body').addEventListener('click', (e) => {
-			if (
-				e.target.className === 'app' ||
-				e.target.className.includes('overlay')
-			) {
-				document.querySelector('.overlay').classList.remove('show')
-				this.setState({ showSolution: false })
-				this.setState({ showHelp: false })
+			if (e.target.className.includes('overlay')) {
+				if (this.state.showSolution || this.state.showHelp) {
+					this.hideCards()
+				}
 			}
 		})
-	}
-	showHideHelp = () => {
-		if (!this.state.showHelp) {
-			this.setState({ showSolution: false })
-		}
-		document.querySelector('.overlay').classList.toggle('show')
-		this.setState({ showHelp: !this.state.showHelp })
-	}
-	showHideCard = () => {
-		if (!this.state.showSolution) {
-			this.setState({ showHelp: false })
-		}
-		document.querySelector('.overlay').classList.toggle('show')
-		this.setState({ showSolution: !this.state.showSolution })
 	}
 
 	getSolutions() {
@@ -120,6 +102,7 @@ export default class App extends Component {
 			return null
 		}
 	}
+
 	updateInput(text) {
 		const updatedText = sanitizeInput(text)
 		const total =
@@ -128,6 +111,7 @@ export default class App extends Component {
 				: this.calculateOutput(text) || this.state.total
 		this.setState({ text: updatedText, total: total })
 	}
+
 	backspace = () => {
 		const updatedText = this.state.text.slice(0, -1)
 		this.updateInput(updatedText)
@@ -136,11 +120,13 @@ export default class App extends Component {
 	onInputChange = (event) => {
 		this.updateInput(event.target.value)
 	}
+
 	onButtonClick = (event) => {
 		const updatedText =
 			this.state.text + event.target.getAttribute('data-value')
 		this.updateInput(updatedText)
 	}
+
 	checkIfSolved = () => {
 		if (this.state.total === this.state.solveFor) {
 			const inputNumbers = this.state.text.match(/\d+/g).map(Number)
@@ -152,16 +138,30 @@ export default class App extends Component {
 	submitSolution = (event) => {
 		event.preventDefault()
 		if (this.checkIfSolved()) {
-			this.setState({ showSolution: !this.state.showSolution })
-			document.querySelector('.overlay').classList.toggle('show')
+			this.toggleSolution()
 		}
+	}
+
+	hideCards = () => {
+		document.querySelector('.overlay').classList.toggle('hide')
+		this.setState({ showSolution: false, showHelp: false })
+	}
+
+	toggleSolution = () => {
+		this.hideCards()
+		this.setState({ showSolution: !this.state.showSolution })
+	}
+
+	toggleHelp = () => {
+		this.hideCards()
+		this.setState({ showHelp: !this.state.showHelp })
 	}
 
 	render() {
 		return (
 			<div className="app">
 				<div className="overlay" />
-				<GameCard
+				<GameBoard
 					numbers={this.state.numbers}
 					onClick={this.onButtonClick}
 				/>
@@ -177,23 +177,24 @@ export default class App extends Component {
 					solved={this.checkIfSolved()}
 					solutions={this.state.solutions}
 					newCard={this.createNewCard}
-					showSolution={this.state.showSolution}
+					show={this.state.showSolution}
+					toggleSolution={this.toggleSolution}
 				/>
 
 				<div className="buttons">
 					<button className="button" onClick={this.submitSolution}>
 						Submit
 					</button>
-					<button className="button" onClick={this.showHideCard}>
+					<button className="button" onClick={this.toggleSolution}>
 						I Give Up
 					</button>
-					<button className="button" onClick={this.showHideHelp}>
+					<button className="button" onClick={this.toggleHelp}>
 						How to Play
 					</button>
 				</div>
-				<HelpPage
+				<HelpCard
 					show={this.state.showHelp}
-					showHideHelp={this.showHideHelp}
+					toggleHelp={this.toggleHelp}
 				/>
 			</div>
 		)

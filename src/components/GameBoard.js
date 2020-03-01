@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './GameCard.css'
+import './GameBoard.css'
 
-export default class GameCard extends Component {
+export default class GameBoard extends Component {
 	renderList() {
 		return this.props.numbers.map((number, idx) => {
 			const onClick = this.props.onClick
@@ -20,7 +20,7 @@ export default class GameCard extends Component {
 	render() {
 		const onClick = this.props.onClick
 		return (
-			<div className="game-card">
+			<div className="game-board">
 				<div data-value="+" className="operation" onClick={onClick}>
 					+
 				</div>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { evaluate } from 'mathjs'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
 import GameBoard from './GameBoard'
 import MathInputBox from './MathInputBox'
@@ -8,6 +10,15 @@ import HelpCard from './HelpCard'
 import { solver } from '../scripts/solver'
 
 import './App.css'
+
+const colors = {
+	red: 'rgb(205, 82, 82)',
+	orange: 'rgb(225, 133, 63)',
+	yellow: 'rgb(225, 179, 63)',
+	green: 'rgb(71, 189, 154)',
+	blue: 'rgb(63, 122, 225)',
+	purple: 'rgb(140, 111, 208)',
+}
 
 const generateNumber = () => {
 	return Math.floor(Math.random() * 10)
@@ -46,13 +57,14 @@ function sanitizeInput(string) {
 		'*',
 		'x',
 		'/',
+		'÷',
 		'\u0020',
 	]
 	string = string.toLowerCase()
 	const result = []
 	for (let char of string) {
 		if (acceptableChars.includes(char)) {
-			result.push(char.replace('x', '*'))
+			result.push(char.replace('x', '*').replace('÷', '/'))
 		}
 	}
 	return result.join('')
@@ -65,25 +77,34 @@ export default class App extends Component {
 		solutions: [],
 		solveFor: 24,
 		total: 0, // Ideally exclude from state, but execute in Mathjs errors a lot
+		colorIdx: 5,
 		showSolution: false,
 		showHelp: true,
 	}
 
 	createNewCard = () => {
 		const [ arr, solutions ] = generateSolvableArray(this.state.solveFor)
+		const newColorIdx =
+			(this.state.colorIdx + 1) % Object.keys(colors).length
 		this.setState({
 			text: '',
 			numbers: arr,
 			solutions: solutions,
 			total: 0,
 			showSolution: false,
+			colorIdx: newColorIdx,
 		})
+		this.setColor(newColorIdx)
 	}
 
 	componentDidMount = () => {
 		this.createNewCard()
-		document.querySelector('body').addEventListener('click', (e) => {
-			if (e.target.className.includes('overlay')) {
+		this.setColor(this.state.colorIdx)
+		document.querySelector('.overlay').addEventListener('click', (e) => {
+			if (
+				e.target.tagName !== 'path' &&
+				e.target.className.includes('overlay')
+			) {
 				if (this.state.showSolution || this.state.showHelp) {
 					this.hideCards()
 				}
@@ -112,7 +133,7 @@ export default class App extends Component {
 		this.setState({ text: updatedText, total: total })
 	}
 
-	backspace = () => {
+	backspace = (e) => {
 		const updatedText = this.state.text.slice(0, -1)
 		this.updateInput(updatedText)
 	}
@@ -125,6 +146,21 @@ export default class App extends Component {
 		const updatedText =
 			this.state.text + event.target.getAttribute('data-value')
 		this.updateInput(updatedText)
+	}
+
+	onSolveForChange = (event) => {
+		this.setState(
+			{ solveFor: parseInt(event.target.value) },
+			this.createNewCard,
+		)
+	}
+
+	setColor(colorIdx) {
+		const rgb = colors[Object.keys(colors)[colorIdx]]
+		document.documentElement.style.setProperty(
+			'--game-card-background',
+			rgb,
+		)
 	}
 
 	checkIfSolved = () => {
@@ -161,6 +197,19 @@ export default class App extends Component {
 		return (
 			<div className="app">
 				<div className="overlay" />
+				<div className="github">
+					<a href="https://github.com/ggydush/gameOf24">
+						<h3>
+							GitHub
+							<FontAwesomeIcon
+								icon={faGithubSquare}
+								className="github-icon"
+							/>
+						</h3>
+					</a>
+				</div>
+
+				<h1>Solve for: {this.state.solveFor}</h1>
 				<GameBoard
 					numbers={this.state.numbers}
 					onClick={this.onButtonClick}
@@ -195,6 +244,8 @@ export default class App extends Component {
 				<HelpCard
 					show={this.state.showHelp}
 					toggleHelp={this.toggleHelp}
+					selectedSolveFor={this.state.solveFor}
+					onSolveForChange={this.onSolveForChange}
 				/>
 			</div>
 		)

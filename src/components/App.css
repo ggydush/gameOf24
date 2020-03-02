@@ -10,6 +10,7 @@ body {
 	background-color: rgba(152, 150, 150, 0.8);
 	z-index: 3;
 }
+
 .hide {
 	display: none;
 }
@@ -22,6 +23,11 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+.app h1 {
+	margin-bottom: 10px;
+}
+
 .buttons {
 	display: flex;
 	justify-content: space-between;
@@ -37,10 +43,35 @@ body {
 	cursor: pointer;
 	transition: 0.3s;
 	border: 1px solid grey;
+	user-select: none;
 }
+
 .button:hover {
 	transform: scale(1.05);
 }
+
 .button:focus {
 	outline: none;
+}
+
+.github {
+	position: absolute;
+	bottom: 40px;
+	font-size: 20px;
+	filter: brightness(70%);
+	cursor: pointer;
+}
+
+.github a {
+	text-decoration: none;
+	color: var(--game-card-background);
+}
+
+.github a:visited {
+	text-decoration: none;
+}
+
+.github-icon {
+	margin-left: 5px;
+	color: var(--game-card-background);
 }

@@ -19,8 +19,9 @@ export default class GameBoard extends Component {
 	}
 	render() {
 		const onClick = this.props.onClick
+		const className = this.props.small ? 'game-board small' : 'game-board'
 		return (
-			<div className="game-board">
+			<div className={className}>
 				<div data-value="+" className="operation" onClick={onClick}>
 					+
 				</div>

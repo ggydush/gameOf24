@@ -197,56 +197,63 @@ export default class App extends Component {
 		return (
 			<div className="app">
 				<div className="overlay" />
-				<div className="github">
-					<a href="https://github.com/ggydush/gameOf24">
-						<h3>
-							GitHub
-							<FontAwesomeIcon
-								icon={faGithubSquare}
-								className="github-icon"
-							/>
-						</h3>
-					</a>
-				</div>
+				<div className="container">
+					<h1>Solve for: {this.state.solveFor}</h1>
+					<GameBoard
+						numbers={this.state.numbers}
+						onClick={this.onButtonClick}
+					/>
+					<MathInputBox
+						value={this.state.text}
+						onChange={this.onInputChange}
+						onSubmit={this.submitSolution}
+						total={this.state.total}
+						backspace={this.backspace}
+					/>
+					<SolutionCard
+						userSolution={this.state.text}
+						solved={this.checkIfSolved()}
+						solutions={this.state.solutions}
+						newCard={this.createNewCard}
+						show={this.state.showSolution}
+						toggleSolution={this.toggleSolution}
+					/>
 
-				<h1>Solve for: {this.state.solveFor}</h1>
-				<GameBoard
-					numbers={this.state.numbers}
-					onClick={this.onButtonClick}
-				/>
-				<MathInputBox
-					value={this.state.text}
-					onChange={this.onInputChange}
-					onSubmit={this.submitSolution}
-					total={this.state.total}
-					backspace={this.backspace}
-				/>
-				<SolutionCard
-					userSolution={this.state.text}
-					solved={this.checkIfSolved()}
-					solutions={this.state.solutions}
-					newCard={this.createNewCard}
-					show={this.state.showSolution}
-					toggleSolution={this.toggleSolution}
-				/>
-
-				<div className="buttons">
-					<button className="button" onClick={this.submitSolution}>
-						Submit
-					</button>
-					<button className="button" onClick={this.toggleSolution}>
-						I Give Up
-					</button>
-					<button className="button" onClick={this.toggleHelp}>
-						How to Play
-					</button>
+					<div className="buttons">
+						<button
+							className="button"
+							onClick={this.submitSolution}
+						>
+							Submit
+						</button>
+						<button
+							className="button"
+							onClick={this.toggleSolution}
+						>
+							I Give Up
+						</button>
+						<button className="button" onClick={this.toggleHelp}>
+							How to Play
+						</button>
+					</div>
+					<div className="github">
+						<a href="https://github.com/ggydush/gameOf24">
+							<h3>
+								GitHub
+								<FontAwesomeIcon
+									icon={faGithubSquare}
+									className="github-icon"
+								/>
+							</h3>
+						</a>
+					</div>
+					<HelpCard
+						show={this.state.showHelp}
+						toggleHelp={this.toggleHelp}
+						selectedSolveFor={this.state.solveFor}
+						onSolveForChange={this.onSolveForChange}
+					/>
 				</div>
-				<HelpCard
-					show={this.state.showHelp}
-					toggleHelp={this.toggleHelp}
-					selectedSolveFor={this.state.solveFor}
-					onSolveForChange={this.onSolveForChange}
-				/>
 			</div>
 		)
 	}

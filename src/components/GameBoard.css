@@ -1,16 +1,11 @@
 :root {
-	--game-card-background: rgb(63, 122, 225);
-	--game-card-cirle-background: rgb(255, 255, 255);
-	--game-card-cross-color: rgb(0, 0, 0);
-	--game-card-height: 400px;
-	--game-font-size: 70px;
 	margin: 0;
 	padding: 0;
 }
 
 .game-board {
-	height: var(--game-card-height);
-	width: var(--game-card-height);
+	width: var(--container-width);
+	height: var(--container-width);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -19,7 +14,7 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	margin-bottom: 20px;
 	position: relative;
-	transition: background-color ease-in 0.5s;
+	transition: background-color ease-in 0.3s;
 }
 
 .game-board * {

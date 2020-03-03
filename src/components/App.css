@@ -1,3 +1,12 @@
+:root {
+	--container-width: 400px;
+	--game-card-background: rgb(63, 122, 225);
+	--game-card-cirle-background: rgb(255, 255, 255);
+	--game-card-cross-color: rgb(0, 0, 0);
+	--game-card-height: 400px;
+	--game-font-size: 70px;
+}
+
 body {
 	z-index: -1;
 	font-family: Arial-Narrow;
@@ -9,6 +18,11 @@ body {
 	height: 100vh;
 	background-color: rgba(152, 150, 150, 0.8);
 	z-index: 3;
+}
+.container {
+	width: var(--container-width);
+	display: flex;
+	flex-direction: column;
 }
 
 .hide {
@@ -26,13 +40,14 @@ body {
 
 .app h1 {
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 .buttons {
 	display: flex;
 	justify-content: space-between;
-	width: 350px;
 	margin-top: 15px;
+	padding: 0px 10px;
 }
 
 .button {
@@ -56,7 +71,10 @@ body {
 
 .github {
 	position: absolute;
-	bottom: 40px;
+	justify-content: center;
+	bottom: 5%;
+	left: 50%;
+	transform: translate(-50%);
 	font-size: 20px;
 	filter: brightness(70%);
 	cursor: pointer;
@@ -74,4 +92,43 @@ body {
 .github-icon {
 	margin-left: 5px;
 	color: var(--game-card-background);
+}
+
+@media (max-width: 600px) {
+	.container {
+		width: 330px;
+	}
+	.game-board {
+		height: 330px;
+		width: 330px;
+	}
+	.card {
+		width: 320px;
+	}
+
+	.small {
+		height: 120px;
+		width: 120px;
+		pointer-events: none;
+		margin: 20px 0px;
+	}
+}
+@media (max-width: 330px) {
+	.container {
+		width: 300px;
+	}
+	.game-board {
+		height: 300px;
+		width: 300px;
+	}
+	.card {
+		width: 300px;
+	}
+
+	.small {
+		height: 120px;
+		width: 120px;
+		pointer-events: none;
+		margin: 20px 0px;
+	}
 }

@@ -20,9 +20,23 @@ body {
 	z-index: 3;
 }
 .container {
-	width: var(--container-width);
+	width: 400px;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.container .game {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 12;
+}
+
+.container .github {
+	flex: 1;
+	margin-top: 20px;
 }
 
 .hide {
@@ -69,17 +83,6 @@ body {
 	outline: none;
 }
 
-.github {
-	position: absolute;
-	justify-content: center;
-	bottom: 5%;
-	left: 50%;
-	transform: translate(-50%);
-	font-size: 20px;
-	filter: brightness(70%);
-	cursor: pointer;
-}
-
 .github a {
 	text-decoration: none;
 	color: var(--game-card-background);
@@ -96,33 +99,14 @@ body {
 
 @media (max-width: 600px) {
 	.container {
-		width: 330px;
+		width: 95vw;
 	}
 	.game-board {
-		height: 330px;
-		width: 330px;
+		height: 95vw;
+		width: 95vw;
 	}
 	.card {
-		width: 320px;
-	}
-
-	.small {
-		height: 120px;
-		width: 120px;
-		pointer-events: none;
-		margin: 20px 0px;
-	}
-}
-@media (max-width: 330px) {
-	.container {
-		width: 300px;
-	}
-	.game-board {
-		height: 300px;
-		width: 300px;
-	}
-	.card {
-		width: 300px;
+		width: 85vw;
 	}
 
 	.small {

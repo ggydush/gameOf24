@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/gameOf24/static/css/main.e481c75f.chunk.css",
-    "main.js": "/gameOf24/static/js/main.25554c84.chunk.js",
-    "main.js.map": "/gameOf24/static/js/main.25554c84.chunk.js.map",
+    "main.css": "/gameOf24/static/css/main.23ba64c0.chunk.css",
+    "main.js": "/gameOf24/static/js/main.41f500c1.chunk.js",
+    "main.js.map": "/gameOf24/static/js/main.41f500c1.chunk.js.map",
     "runtime-main.js": "/gameOf24/static/js/runtime-main.a992f744.js",
     "runtime-main.js.map": "/gameOf24/static/js/runtime-main.a992f744.js.map",
     "static/js/2.fd91d6bb.chunk.js": "/gameOf24/static/js/2.fd91d6bb.chunk.js",
     "static/js/2.fd91d6bb.chunk.js.map": "/gameOf24/static/js/2.fd91d6bb.chunk.js.map",
     "index.html": "/gameOf24/index.html",
-    "precache-manifest.a5f8b4d2b4f2051dfa37d158ed2dde6f.js": "/gameOf24/precache-manifest.a5f8b4d2b4f2051dfa37d158ed2dde6f.js",
+    "precache-manifest.9fc10857498b68295a36a5f0c18624d2.js": "/gameOf24/precache-manifest.9fc10857498b68295a36a5f0c18624d2.js",
     "service-worker.js": "/gameOf24/service-worker.js",
-    "static/css/main.e481c75f.chunk.css.map": "/gameOf24/static/css/main.e481c75f.chunk.css.map",
+    "static/css/main.23ba64c0.chunk.css.map": "/gameOf24/static/css/main.23ba64c0.chunk.css.map",
     "static/js/2.fd91d6bb.chunk.js.LICENSE.txt": "/gameOf24/static/js/2.fd91d6bb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a992f744.js",
     "static/js/2.fd91d6bb.chunk.js",
-    "static/css/main.e481c75f.chunk.css",
-    "static/js/main.25554c84.chunk.js"
+    "static/css/main.23ba64c0.chunk.css",
+    "static/js/main.41f500c1.chunk.js"
   ]
 }

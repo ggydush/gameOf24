@@ -1,35 +1,35 @@
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .card {
-	position: fixed;
-	width: 380px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	padding: 20px;
-	background: white;
-	border-radius: 2%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	z-index: 9;
-	opacity: 1.0;
+    position: fixed;
+    width: 380px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: white;
+    border-radius: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 9;
+    opacity: 1.0;
 }
 
 .header {
-	color: var(--game-card-background);
+    color: var(--game-card-background);
 }
 
 h2 {
-	margin: 10px 0px;
+    margin: 10px 0px;
 }
 
 .solution {
-	margin: 8px;
-	font-family: Arial-Narrow;
+    margin: 8px;
+    font-family: Arial-Narrow;
 }
 
 .card .button {
-	margin-top: 10px;
+    margin-top: 10px;
 }

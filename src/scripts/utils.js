@@ -4,20 +4,20 @@
  * @returns {Array} Permutation array
  */
 export const permutations = (inputArr) => {
-	let result = []
-	const permute = (arr, tmp = []) => {
-		if (arr.length === 0) {
-			result.push(tmp)
-		} else {
-			for (let i = 0; i < arr.length; i++) {
-				let curr = arr.slice()
-				let next = curr.splice(i, 1)
-				permute(curr.slice(), tmp.concat(next))
-			}
-		}
-	}
-	permute(inputArr)
-	return result
+    let result = []
+    const permute = (arr, tmp = []) => {
+        if (arr.length === 0) {
+            result.push(tmp)
+        } else {
+            for (let i = 0; i < arr.length; i++) {
+                let curr = arr.slice()
+                let next = curr.splice(i, 1)
+                permute(curr.slice(), tmp.concat(next))
+            }
+        }
+    }
+    permute(inputArr)
+    return result
 }
 
 /**
@@ -28,25 +28,25 @@ export const permutations = (inputArr) => {
  * @returns
  */
 export function product(iterables, repeat = 3) {
-	var argv = Array.prototype.slice.call(arguments),
-		argc = argv.length
-	if (argc === 2 && !isNaN(argv[argc - 1])) {
-		var copies = []
-		for (var i = 0; i < argv[argc - 1]; i++) {
-			copies.push(argv[0].slice())
-		}
-		argv = copies
-	}
-	return argv.reduce(
-		(accumulator, value) => {
-			var tmp = []
-			accumulator.forEach(function(a0) {
-				value.forEach(function(a1) {
-					tmp.push(a0.concat(a1))
-				})
-			})
-			return tmp
-		},
-		[ [] ],
-	)
+    var argv = Array.prototype.slice.call(arguments),
+        argc = argv.length
+    if (argc === 2 && !isNaN(argv[argc - 1])) {
+        var copies = []
+        for (var i = 0; i < argv[argc - 1]; i++) {
+            copies.push(argv[0].slice())
+        }
+        argv = copies
+    }
+    return argv.reduce(
+        (accumulator, value) => {
+            var tmp = []
+            accumulator.forEach(function(a0) {
+                value.forEach(function(a1) {
+                    tmp.push(a0.concat(a1))
+                })
+            })
+            return tmp
+        },
+        [ [] ],
+    )
 }

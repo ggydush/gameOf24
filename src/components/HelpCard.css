@@ -1,36 +1,36 @@
 .card h2,
 p {
-	font-family: "Raleway";
+    font-family: "Raleway";
 }
 .card span {
-	font-family: Arial-Narrow;
+    font-family: Arial-Narrow;
 }
 
 select {
-	margin-left: 5px;
-	font-size: 14px;
+    margin-left: 5px;
+    font-size: 14px;
 }
 
 .small {
-	height: 120px;
-	width: 120px;
-	pointer-events: none;
-	margin: 20px 0px;
+    height: 120px;
+    width: 120px;
+    pointer-events: none;
+    margin: 20px 0px;
 }
 
 .small * {
-	font-size: 26px;
+    font-size: 26px;
 }
 
 .small .number {
-	padding: 5px;
+    padding: 5px;
 }
 
 .small .square {
-	border: 1px solid black;
+    border: 1px solid black;
 }
 
 .small .operation {
-	font-size: 1.1em;
-	padding: 0px 4px 0px 4px;
+    font-size: 1.1em;
+    padding: 0px 4px 0px 4px;
 }

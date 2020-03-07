@@ -1,119 +1,119 @@
 :root {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .game-board {
-	width: var(--container-width);
-	height: var(--container-width);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 5%;
-	background: var(--game-card-background);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	margin-bottom: 20px;
-	position: relative;
-	transition: background-color ease-in 0.3s;
+    width: var(--container-width);
+    height: var(--container-width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    background: var(--game-card-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
+    position: relative;
+    transition: background-color ease-in 0.3s;
 }
 
 .game-board * {
-	font-size: var(--game-font-size);
+    font-size: var(--game-font-size);
 }
 
 .circle {
-	height: 92%;
-	width: 92%;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: var(--game-card-cirle-background);
-	position: relative;
+    height: 92%;
+    width: 92%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--game-card-cirle-background);
+    position: relative;
 }
 
 .circle:before,
 .circle:after {
-	position: absolute;
-	content: '';
-	width: 110%;
-	height: 0.1em;
-	background-color: black;
-	background-color: var(--game-card-cross-color);
-	border-radius: 50%;
+    position: absolute;
+    content: '';
+    width: 110%;
+    height: 0.1em;
+    background-color: black;
+    background-color: var(--game-card-cross-color);
+    border-radius: 50%;
 }
 
 .circle:before {
-	transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .circle:after {
-	transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 .number {
-	position: absolute;
-	padding: 0.4em;
-	cursor: pointer;
-	user-select: none;
+    position: absolute;
+    padding: 0.4em;
+    cursor: pointer;
+    user-select: none;
 }
 .number:nth-child(1) {
-	top: 0;
-	left: 50%;
-	transform: translate(-50%, 0);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 .number:nth-child(2) {
-	top: 50%;
-	right: 0;
-	transform: translate(0, -55%);
+    top: 50%;
+    right: 0;
+    transform: translate(0, -55%);
 }
 .number:nth-child(3) {
-	bottom: 0;
-	left: 50%;
-	transform: translate(-50%, 0);
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 .number:nth-child(4) {
-	top: 50%;
-	left: 0;
-	transform: translate(0, -55%);
+    top: 50%;
+    left: 0;
+    transform: translate(0, -55%);
 }
 .operation {
-	position: absolute;
-	font-size: 3em;
-	padding: 0.3rem 0.8rem;
-	cursor: pointer;
-	user-select: none;
+    position: absolute;
+    font-size: 3em;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    user-select: none;
 }
 .operation:nth-child(1) {
-	top: 0;
-	left: 0;
+    top: 0;
+    left: 0;
 }
 .operation:nth-child(2) {
-	top: 0;
-	right: 0;
+    top: 0;
+    right: 0;
 }
 .operation:nth-child(3) {
-	bottom: 0;
-	right: 0;
+    bottom: 0;
+    right: 0;
 }
 .operation:nth-child(4) {
-	bottom: 0;
-	left: 0;
+    bottom: 0;
+    left: 0;
 }
 .square {
-	width: 25%;
-	height: 25%;
-	background-color: var(--game-card-background);
-	z-index: 2;
-	border-radius: 25%;
-	border: 0.2rem solid black;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	filter: brightness(120%);
-	transition: background-color ease-in 0.5s;
+    width: 25%;
+    height: 25%;
+    background-color: var(--game-card-background);
+    z-index: 2;
+    border-radius: 25%;
+    border: 0.2rem solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: brightness(120%);
+    transition: background-color ease-in 0.5s;
 }
 .square * {
-	padding: 0 0.2em 0.1em 0.2em;
-	cursor: pointer;
-	user-select: none;
+    padding: 0 0.2em 0.1em 0.2em;
+    cursor: pointer;
+    user-select: none;
 }
